@@ -159,7 +159,7 @@ public class SettlementProcessors {
 
     public static void processPasseSeco(List<String> grupos, List<String> numbers) {
         String firstAnimal = TableAnimal.getAnimalByNumber(Integer.parseInt(grupos.get(0))).get();
-        String secondAnimal = TableAnimal.getAnimalByNumber(Integer.parseInt(grupos.get(1))).get(); 
+        String secondAnimal = TableAnimal.getAnimalByNumber(Integer.parseInt(grupos.get(1))).get();
         List<Integer> numbersOfFirstAnimal = TableAnimal.getNumbersForAnimal(firstAnimal);
         List<Integer> numbersOfSecondAnimal = TableAnimal.getNumbersForAnimal(secondAnimal);
         if (numbersOfFirstAnimal.contains(Integer.parseInt(numbers.get(0))) && numbersOfSecondAnimal.contains(Integer.parseInt(numbers.get(1)))) {
