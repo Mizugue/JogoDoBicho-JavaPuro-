@@ -37,85 +37,38 @@ public class HandlerChecker {
 
         System.out.println(log);
 
+        for (int i = 0; i < log.size(); i++){
+            if (log.get(i).isEmpty()) continue;
 
-        if (!log.get(0).isEmpty()) {
-            log.get(0).stream().map(Object::toString).forEach(bet -> processMilharSeca(bet, numbers));
-        }
-
-        if (!log.get(1).isEmpty()) {
-            log.get(1).stream().map(Object::toString).forEach(bet -> processMilharCercada(bet, numbers));
-        }
-        if (!log.get(2).isEmpty()) {
-            log.get(2).stream().map(Object::toString).forEach(bet -> processMilharInvertidaSeca(bet, numbers));
-        }
-
-        if (!log.get(3).isEmpty()) {
-            log.get(3).stream().map(Object::toString).forEach(bet -> processMilharInvertidaCercada(bet, numbers));
-        }
-
-        if (!log.get(4).isEmpty()) {
-            log.get(4).stream().map(Object::toString).forEach(bet -> processCentenaSeca(bet, numbers));
-        }
-
-        if (!log.get(5).isEmpty()) {
-            log.get(5).stream().map(Object::toString).forEach(bet -> processCentenaCercada(bet, numbers));
-        }
-        if (!log.get(6).isEmpty()) {
-            log.get(6).stream().map(Object::toString).forEach(bet -> processCentenaInvertidaSeca(bet, numbers));
-        }
-
-        if (!log.get(7).isEmpty()) {
-            log.get(7).stream().map(Object::toString).forEach(bet -> processCentenaInvertidaCercada(bet, numbers));
-        }
-        if (!log.get(8).isEmpty()) {
-            log.get(8).stream().map(Object::toString).forEach(bet -> processDezenaSeca(bet, numbers));
+            switch (i) {
+                case 0 -> log.get(i).forEach(bet -> processMilharSeca(bet.toString(), numbers));
+                case 1 -> log.get(i).forEach(bet -> processMilharCercada(bet.toString(), numbers));
+                case 2 -> log.get(i).forEach(bet -> processMilharInvertidaSeca(bet.toString(), numbers));
+                case 3 -> log.get(i).forEach(bet -> processMilharInvertidaCercada(bet.toString(), numbers));
+                case 4 -> log.get(i).forEach(bet -> processCentenaSeca(bet.toString(), numbers));
+                case 5 -> log.get(i).forEach(bet -> processCentenaCercada(bet.toString(), numbers));
+                case 6 -> log.get(i).forEach(bet -> processCentenaInvertidaSeca(bet.toString(), numbers));
+                case 7 -> log.get(i).forEach(bet -> processCentenaInvertidaCercada(bet.toString(), numbers));
+                case 8 -> log.get(i).forEach(bet -> processDezenaSeca(bet.toString(), numbers));
+                case 9 -> log.get(i).forEach(bet -> processDezenaCercada(bet.toString(), numbers));
+                case 10 -> log.get(i).forEach(bet -> processDezenaInvertidaSeca(bet.toString(), numbers));
+                case 11 -> log.get(i).forEach(bet -> processDezenaInvertidaCercada(bet.toString(), numbers));
+                case 12 -> ((List<List<String>>) log.get(i)).forEach(dezenas -> processDuqueDeDezena(dezenas, numbers));
+                case 13 -> ((List<List<String>>) log.get(i)).forEach(dezenas -> processTernoDeDezena(dezenas, numbers));
+                case 14 -> log.get(i).forEach(bet -> processGrupoSeco(bet.toString(), groups));
+                case 15 -> log.get(i).forEach(bet -> processGrupoCercado(bet.toString(), groups));
+                case 16 -> ((List<List<String>>) log.get(i)).forEach(grupos -> processDuplaGrupoSeco(grupos, groups));
+                case 17 -> ((List<List<String>>) log.get(i)).forEach(grupos -> processDuplaGrupoCercado(grupos, groups));
+                case 18 -> ((List<List<String>>) log.get(i)).forEach(grupos -> processTernoGrupoSeco(grupos, groups));
+                case 19 -> ((List<List<String>>) log.get(i)).forEach(grupos -> processTernoGrupoCercado(grupos, groups));
+                case 20 -> ((List<List<String>>) log.get(i)).forEach(grupos -> processPasseSeco(grupos, groups));
+                case 21 -> ((List<List<String>>) log.get(i)).forEach(grupos -> processPasseCercado(grupos, groups));
+                case 22 -> ((List<List<String>>) log.get(i)).forEach(grupos -> processPasseInvertidoSeco(grupos, groups));
+                case 23 -> ((List<List<String>>) log.get(i)).forEach(grupos -> processPasseInvertidoCercado(grupos, groups));
+                }
         }
 
-        if (!log.get(9).isEmpty()) {
-            log.get(9).stream().map(Object::toString).forEach(bet -> processDezenaCercada(bet, numbers));
-        }
-        if (!log.get(10).isEmpty()) {
-            log.get(10).stream().map(Object::toString).forEach(bet -> processDezenaInvertidaSeca(bet, numbers));
-        }
 
-        if (!log.get(11).isEmpty()) {
-            log.get(11).stream().map(Object::toString).forEach(bet -> processDezenaInvertidaCercada(bet, numbers));
-        }
-        if (!log.get(12).isEmpty()) {
-            ((List<List<String>>) log.get(12)).forEach(dezenas -> processDuqueDeDezena(dezenas, numbers));
-        }
-
-        if (!log.get(13).isEmpty()) {
-            ((List<List<String>>) log.get(13)).forEach(dezenas -> processTernoDeDezena(dezenas, numbers));
-        }
-
-        if (!log.get(14).isEmpty()) {
-            log.get(14).stream().map(Object::toString).forEach(bet -> processGrupoSeco(bet, groups));
-        }
-
-        if (!log.get(15).isEmpty()) {
-            log.get(15).stream().map(Object::toString).forEach(bet -> processGrupoCercado(bet, groups));
-        }
-
-        if (!log.get(16).isEmpty()) {
-            ((List<List<String>>) log.get(16)).forEach(grupos -> processDuplaGrupoSeco(grupos, groups));
-        }
-
-        if (!log.get(17).isEmpty()) {
-            ((List<List<String>>) log.get(17)).forEach(grupos -> processDuplaGrupoCercado(grupos, groups));
-        }
-
-        if (!log.get(18).isEmpty()) {
-            ((List<List<String>>) log.get(18)).forEach(grupos -> processTernoGrupoSeco(grupos, groups));
-        }
-
-        if (!log.get(19).isEmpty()) {
-            ((List<List<String>>) log.get(19)).forEach(grupos -> processTernoGrupoCercado(grupos, groups));
-        }
-
-        if (!log.get(19).isEmpty()) {
-            ((List<List<String>>) log.get(19)).forEach(grupos -> processTernoGrupoCercado(grupos, groups));
-        }
     }
 }
 

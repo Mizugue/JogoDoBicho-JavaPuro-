@@ -116,7 +116,6 @@ public class HandlerInputData {
             switch (op) {
                 case 1, 2, 3, 4 -> {
                     System.out.println("Qual milhar foi jogada?");
-                    //int milhar = sc.nextInt();
                     String milhar = sc.next();
                     if (op == 1) {
                         milharSeca.add(milhar);
@@ -130,7 +129,6 @@ public class HandlerInputData {
                 }
                 case 5, 6, 7, 8 -> {
                     System.out.println("Qual centena foi jogada? ");
-                    //int centena = sc.nextInt();
                     String centena = sc.next();
                     if (op == 5) {
                         centenaSeca.add(centena);
@@ -144,7 +142,6 @@ public class HandlerInputData {
                 }
                 case 9, 10, 11, 12 -> {
                     System.out.println("Qual dezena foi jogada? ");
-                    //int dezena = sc.nextInt();
                     String dezena = sc.next();
                     if (op == 9) {
                         dezenaSeca.add(dezena);
@@ -158,17 +155,12 @@ public class HandlerInputData {
                 }
                 case 13 -> {
                     System.out.println("Digite as dezenas do duque de dezena: ");
-                    //int d1 = sc.nextInt();
-                    //int d2 = sc.nextInt();
                     String d1 = sc.next();
                     String d2 = sc.next();
                     duqueDeDezena.add(List.of(d1, d2));
                 }
                 case 14 -> {
                     System.out.println("Digite as dezenas do terno de dezena: ");
-                    //int d1 = sc.nextInt();
-                    //int d2 = sc.nextInt();
-                    //int d3 = sc.nextInt();
                     String d1 = sc.next();
                     String d2 = sc.next();
                     String d3 = sc.next();
@@ -176,7 +168,6 @@ public class HandlerInputData {
                 }
                 case 15, 16 -> {
                     System.out.println("Qual grupo foi jogado? ");
-                    //int grupo = sc.nextInt();
                     String grupo = sc.next();
                     if (op == 15) {
                         grupoSeco.add(grupo);
@@ -186,8 +177,6 @@ public class HandlerInputData {
                 }
                 case 17, 18 -> {
                     System.out.println("Digite os dois grupos da dupla de grupo: ");
-                    //int g1 = sc.nextInt();
-                    //int g2 = sc.nextInt();
                     String g1 = sc.next();
                     String g2 = sc.next();
                     if (op == 17) {
@@ -198,9 +187,6 @@ public class HandlerInputData {
                 }
                 case 19, 20 -> {
                     System.out.println("Digite os três grupos do terno de grupo: ");
-                    //int g1 = sc.nextInt();
-                    //int g2 = sc.nextInt();
-                    //int g3 = sc.nextInt();
                     String g1 = sc.next();
                     String g2 = sc.next();
                     String g3 = sc.next();
@@ -212,8 +198,6 @@ public class HandlerInputData {
                 }
                 case 21, 22, 23, 24 -> {
                     System.out.println("Digite os dois grupos do passe: ");
-                    //int g1 = sc.nextInt();
-                    //int g2 = sc.nextInt();
                     String g1 = sc.next();
                     String g2 = sc.next();
                     if (op == 21) {

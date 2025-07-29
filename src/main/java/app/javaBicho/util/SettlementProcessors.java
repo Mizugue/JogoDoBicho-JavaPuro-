@@ -119,7 +119,7 @@ public class SettlementProcessors {
     public static void processGrupoSeco(String grupo, List<String> numbers) {
         List<String> result = numbers.stream().map(x -> x.substring(2)).collect(Collectors.toList());
         if (Objects.equals(grupo, numbers.get(0))) {
-            System.out.println("Parabens! Voce conseguiu o jogo do grupo seco ->" + " " + grupo );
+            System.out.println("Parabens! Voce conseguiu o jogo do grupo seco ->" + " " + grupo);
         }
     }
 
@@ -158,41 +158,62 @@ public class SettlementProcessors {
     }
 
     public static void processPasseSeco(List<String> grupos, List<String> numbers) {
-        String firstAnimal = TableAnimal.getAnimalByNumber(Integer.parseInt(grupos.get(0))).get();
-        String secondAnimal = TableAnimal.getAnimalByNumber(Integer.parseInt(grupos.get(1))).get();
-        List<Integer> numbersOfFirstAnimal = TableAnimal.getNumbersForAnimal(firstAnimal);
-        List<Integer> numbersOfSecondAnimal = TableAnimal.getNumbersForAnimal(secondAnimal);
-        if (numbersOfFirstAnimal.contains(Integer.parseInt(numbers.get(0))) && numbersOfSecondAnimal.contains(Integer.parseInt(numbers.get(1)))) {
-            System.out.println("Parabens! Voce conseguiu o jogo do passe seco ->" + " " + firstAnimal + " " + secondAnimal);
+        String firstGroup = grupos.get(0);
+        String secondGroup = grupos.get(1);
+        if (Objects.equals(grupos.get(0), numbers.get(0)) && Objects.equals(grupos.get(1), numbers.get(1))) {
+            System.out.println("Parabens! Voce conseguiu o jogo do passe seco ->" + " " + TableAnimal.getAnimalByGroup(firstGroup) + " " + TableAnimal.getAnimalByGroup(secondGroup));
         }
     }
+
 
     public static void processPasseCercado(List<String> grupos, List<String> numbers) {
-        String firstAnimal = TableAnimal.getAnimalByNumber(Integer.parseInt(grupos.get(0))).get();
-        String secondAnimal = TableAnimal.getAnimalByNumber(Integer.parseInt(grupos.get(1))).get();
+        String firstGroup = grupos.get(0);
+        String secondGroup = grupos.get(1);
+        List<Boolean> checkerOne = new ArrayList<>();
+        List<Boolean> checkerTwo = new ArrayList<>();
 
-        List<Integer> numbersOfFirstAnimal = TableAnimal.getNumbersForAnimal(firstAnimal);
-        List<Integer> numbersOfSecondAnimal = TableAnimal.getNumbersForAnimal(secondAnimal);
+        for (String number : numbers) {
+            checkerOne.add(Objects.equals(firstGroup, number));
+        }
 
-        if (numbers.contains(numbersOfFirstAnimal) && numbersOfSecondAnimal.contains(Integer.parseInt(numbers.get(1)))) {
-            System.out.println("Parabens! Voce conseguiu o jogo do passe seco ->" + " " + firstAnimal + " " + secondAnimal);
+        for (String number : numbers) {
+            checkerTwo.add(Objects.equals(secondGroup, number));
+        }
+
+        for (int i = 0; i < numbers.size(); i++) {
+            if (checkerOne.get(i)) {
+                for (int j = i + 1; j < numbers.size(); j++) {
+                    if (checkerTwo.get(j)) {
+                        System.out.println("Parabens! Voce conseguiu o jogo do passe seco ->" + " "
+                                + TableAnimal.getAnimalByGroup(firstGroup) + " " + TableAnimal.getAnimalByGroup(secondGroup));
+                    }
+                    return;
+                }
+            }
+
         }
     }
 
+
     public static void processPasseInvertidoSeco(List<String> grupos, List<String> numbers) {
-        if (Objects.equals(grupos.get(0), numbers.get(0)) && Objects.equals(grupos.get(1), numbers.get(1)) && Objects.equals(grupos.get(2), numbers.get(2))) {
-            System.out.println("Parabens! Voce conseguiu o jogo do terno de grupo seco ->" + " " + grupos);
+        String firstGroup = grupos.get(0);
+        String secondGroup = grupos.get(1);
+        List<String> init2 = new ArrayList<>();
+        init2.add(String.valueOf(Arrays.asList(numbers.get(0), numbers.get(1))));
+        if (init2.contains(grupos.get(0)) && init2.contains(grupos.get(1))) {
+            System.out.println("Parabens! Voce conseguiu o jogo do Passe invertido seco  ->" + " " + TableAnimal.getAnimalByGroup(firstGroup) + " " + TableAnimal.getAnimalByGroup(secondGroup));
         }
     }
 
     public static void processPasseInvertidoCercado(List<String> grupos, List<String> numbers) {
-        if (numbers.contains(grupos.get(0)) && numbers.contains(grupos.get(1)) && numbers.contains(grupos.get(2))) {
-            System.out.println("Parabens! Voce conseguiu o jogo do terno de grupo cercado ->" + " " + grupos);
+        String firstGroup = grupos.get(0);
+        String secondGroup = grupos.get(1);
+        if (numbers.contains(grupos.get(0)) && numbers.contains(grupos.get(1))) {
+            System.out.println("Parabens! Voce conseguiu o jogo da dupla de grupo cercado ->" + " " + TableAnimal.getAnimalByGroup(firstGroup) + " " + TableAnimal.getAnimalByGroup(secondGroup));
         }
     }
 
-
-
+// Voltar aqui para lembrar de tirar essa duvida: Qual a diferenca entre dupla de grupo seco e passe invertido seco, ou dupla de grupo cercado e passe invertido cercado. (Pois os dois na teoria nao dependem da ordem)
 
 
 

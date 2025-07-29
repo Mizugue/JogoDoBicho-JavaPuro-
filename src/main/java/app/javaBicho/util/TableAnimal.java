@@ -7,7 +7,7 @@ public class TableAnimal {
      private static final Map<String, List<Integer>> animalMap;
 
     static {
-        Map<String, List<Integer>> map = new HashMap<>();
+        Map<String, List<Integer>> map = new LinkedHashMap<>();
         map.put("avestruz", Arrays.asList(1, 2, 3, 4));
         map.put("aguia", Arrays.asList(5, 6, 7, 8));
         map.put("burro", Arrays.asList(9, 10, 11, 12));
@@ -47,6 +47,17 @@ public class TableAnimal {
     protected static Map<String, List<Integer>> getAnimalMap() {
         return animalMap;
     }
+
+
+    protected static String getAnimalByGroup(String group) {
+        int position = Integer.parseInt(group);
+        List<String> keys = new ArrayList<>(animalMap.keySet());
+        if (position < 1 || position > keys.size()) {
+            return null;
+        }
+        return keys.get(position - 1);
+    }
+
 
     protected static Optional<String> getAnimalByNumber(int number) {
         int num = number % 100;
