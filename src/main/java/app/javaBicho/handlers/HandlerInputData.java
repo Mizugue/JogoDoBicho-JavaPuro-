@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class HandlerInputData {
 
-    protected static List<List<?>> start() {
+    protected static List<List<?>> setData() {
 
         Scanner sc = new Scanner(System.in);
 
@@ -78,7 +78,7 @@ public class HandlerInputData {
 
 
 
-        System.out.println("Quantos jogos foi feito? ");
+        System.out.println("Quantos jogos foram feitos? ");
         int qtd = sc.nextInt();
 
 

@@ -47,7 +47,7 @@ public class HandlerScrapperResult {
                 }
             }
 
-            System.out.println(result);
+
             return result;
 
 

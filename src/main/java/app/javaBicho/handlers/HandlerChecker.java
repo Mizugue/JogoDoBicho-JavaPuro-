@@ -1,17 +1,16 @@
 package app.javaBicho.handlers;
 
-import app.javaBicho.util.NumberPermutationGenerator;
-import app.javaBicho.util.SettlementProcessors;
+
 
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 import static app.javaBicho.util.SettlementProcessors.*;
 
 public class HandlerChecker {
 
 
-    public static void checker() {
+    public static void start() {
 
         List<String> numbers = new ArrayList<>();
         List<String> groups = new ArrayList<>();
@@ -32,10 +31,11 @@ public class HandlerChecker {
         Collections.reverse(groups);
         Collections.reverse(animals);
 
-        List<List<?>> log = HandlerInputData.start();
+        List<List<?>> log = HandlerInputData.setData();
 
 
-        System.out.println(log);
+
+
 
         for (int i = 0; i < log.size(); i++){
             if (log.get(i).isEmpty()) continue;
@@ -67,6 +67,22 @@ public class HandlerChecker {
                 case 23 -> ((List<List<String>>) log.get(i)).forEach(grupos -> processPasseInvertidoCercado(grupos, groups));
                 }
         }
+
+
+        result.entrySet().stream()
+                .sorted((e1, e2) -> Integer.compare(
+                        Integer.parseInt(e2.getKey().replace("º", "")),
+                        Integer.parseInt(e1.getKey().replace("º", ""))
+                ))
+                .forEach(entry -> {
+                    String posicao = entry.getKey();
+                    String[] partes = entry.getValue().replace("[", "").replace("]", "").split(",");
+                    String milhar = partes[0].trim();
+                    String grupo = partes[1].trim();
+                    String animal = partes[2].trim();
+
+                    System.out.printf("%s: %s  -  Grupo: %s - Animal: %s%n", posicao, milhar, grupo, animal);
+                });
 
 
     }
